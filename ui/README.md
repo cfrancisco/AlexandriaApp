@@ -35,22 +35,6 @@ The UI was developed using the following technologies:
 
 ## :zap: How to run
 
-### :computer: Using Docker
-
-1. Build the Image
-
-```
-   docker build -f Dockerfile -t alexfrontend .
-```
-
-2. Run the docker compose
-
-```
-   cd ..
-
-   docker-compose up -d
-```
-
 ### :computer: For Development
 
 1. Install the dependencies
@@ -65,11 +49,20 @@ The UI was developed using the following technologies:
    yarn dev
 ```
 
-## :large_blue_circle: Screenshots
+### :computer: Using Docker
 
-<div style="display: flex, flex-direction: row, align-items: center, justify-content: center">
-<img src="https://raw.githubusercontent.com/cfrancisco/alexandriaapp/main/.github/ss1.png" alt="Home Screen" width="24%"/>
-</div>
+You also could build a new image for docker
+
+```
+   docker build -f Dockerfile -t alexfrontend .
+```
+
+and updates the docker-compose file and running it using the command:
+
+```
+   cd ..
+   docker-compose up -d
+```
 
 ## :hourglass: Next Steps
 

@@ -93,10 +93,16 @@ const Home = ({ favorites, movies, dispatch }) => {
   );
 };
 
+Home.defaultProps = {
+  favorites: {},
+  movies: [],
+}
+
+
 Home.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  favorites: PropTypes.shape({}).isRequired,
-  movies: PropTypes.ArrayOf(PropTypes.shape({})).isRequired,
+  favorites: PropTypes.shape({}),
+  movies: PropTypes.shape({}),
 }
 
 const mapStateToProps = (state) => ({

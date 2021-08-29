@@ -2,13 +2,14 @@
 ![Next Version](https://img.shields.io/badge/npm-7.0.14-blueviolet)
 ![Next Version](https://img.shields.io/badge/node-15.3.0-green)
 [![CodeFactor](https://www.codefactor.io/repository/github/cfrancisco/alexandriaapp/badge/master)](https://www.codefactor.io/repository/github/cfrancisco/alexandriaapp/overview/master)
-![codecov](https://codecov.io/gh/cfrancisco/alexandriaapp/branch/development/graph/badge.svg)
-![Docker badge ](https://img.shields.io/badge/docker%20hub-cfrancisco10%2Falexfrontend-blue.svg)
+
 
 # Alexandria
 
-**Alexandria** is an application to display information about the searched movies, showing its poster, IMDB rating and also allows you favorite it.
-These information are received directly from an graphql api.
+**Alexandria** is an application that displays information about the searched movies, including their poster, IMDB ratings, as well as the ability to favorite them.
+<div style="display: flex, flex-direction: row, align-items: center, justify-content: center">
+<img src="https://github.com/cfrancisco/AlexandriaApp/blob/master/.github/ss1.png?raw=true" alt="Home Screen" width="50%"/>
+</div>
 
 ## :white_check_mark: Table of Contents
 
@@ -21,28 +22,26 @@ These information are received directly from an graphql api.
 
 ## :page_facing_up: Front-End
 
-Alexandria is a simple application developed using React, Material-UI, and Parcel. The Front End App contains two main screens:
+Alexandria is a simple application developed using React, Material-UI, Parcel, and GraphQL to access the data in the backend service.
 
-- Home screen, where the user receives recommendations or search for a movie;
-- Details screen, where is shown the movies details, as director, actors, release year, and others information.
+The Front End App consists of two main screens:
+- A homepage, which displays movie recommendations or allows the user to search for movies;
+- Details screen, which provides information about the movie, such as director, actors, IMDB rating, etc.
+## :page_facing_up: Back-End
 
+The **Alexandria - Backend** is responsible for retrieving movies catalogs from a third-party API and provides them using GraphQL API.
+
+## :page_facing_up: Technologies
+
+<div style="display: flex, flex-direction: row, align-items: center, justify-content: center">
+<img src="https://github.com/cfrancisco/AlexandriaApp/blob/master/.github/arq.png?raw=true" alt="Software schema" width="60%"/>
+</div>
 
 ## :zap: How to run
 
-## :page_facing_up: Back-End
-
-The **Alexandria - Backend** is responsible for retrieving movies catalogy from a third-party API and provides them using GraphQL schema.
-
-## :zap: Technologies
-
-<div style="display: flex, flex-direction: row, align-items: center, justify-content: center">
-<img src="https://raw.githubusercontent.com/cfrancisco/alexandriaapp/main/.github/ss3.png" alt="Technologies" width="24%"/>
-</div>
-
-
 ### :computer: Using Docker
 
-You should install docker and docker-compose before running the project.
+Installation of Docker and Docker-Compose is required before running the project.
 
 1. Clone the project
 ```
@@ -54,12 +53,13 @@ You should install docker and docker-compose before running the project.
 $ docker-compose up -d
 ```
 
-3. Open the project's URL: localhost:8800
+3. Go to http://localhost:8800 to open the project
 
 ## :large_blue_circle: Screenshots
 
+
 <div style="display: flex, flex-direction: row, align-items: center, justify-content: center">
-<img src="https://raw.githubusercontent.com/cfrancisco/alexandriaapp/main/.github/ss1.png" alt="Home Screen" width="24%"/>
+<img src="https://github.com/cfrancisco/AlexandriaApp/blob/master/.github/ss1.png?raw=true" alt="Details Screen" width="50%"/>
 </div>
 
 

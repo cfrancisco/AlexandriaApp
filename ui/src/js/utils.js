@@ -3,4 +3,4 @@ function getRandInt(min, max) {
 }
 
 
-export default { getRandInt };
+export default getRandInt;

@@ -166,10 +166,16 @@ const MoviePage = ({ favorites, movie, dispatch }) => {
 };
 
 
+
+MoviePage.defaultProps = {
+  favorites: {},
+  movie: {},
+}
+
 MoviePage.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  favorites: PropTypes.shape({}).isRequired,
-  movie: PropTypes.ArrayOf(PropTypes.shape({})).isRequired,
+  favorites: PropTypes.shape({}),
+  movie: PropTypes.shape({}),
 }
 
 
