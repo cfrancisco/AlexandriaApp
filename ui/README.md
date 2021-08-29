@@ -12,10 +12,12 @@ These information are received directly from an graphql api.
 
 ## :page_facing_up: Introduction
 
-Alexandria is a simple application developed using React, Material-UI, and Parcel. The app contains two main screens:
+Alexandria is a simple application developed using React, Material-UI, Parcel, and GraphQL to access the data in the backend service.
 
-- Home screen, where the user receives recommendations or search for a movie;
-- Details screen, where is shown the movies details, as director, actors, release year, and others information.
+The Front End App consists of two main screens:
+
+- A homepage, which displays movie recommendations or allows the user to search for movies;
+- Details screen, which provides information about the movie, such as director, actors, IMDB rating, etc.
 
 ## :zap: Technologies
 
@@ -25,6 +27,7 @@ The UI was developed using the following technologies:
 - [Parcel v2.0](https://parceljs.org/)
 - [Material UI v4.12](https://material-ui.com/)
 - [GraphQL v15.5.1](https://graphql.org/)
+- [Jest v27.0.5](https://jestjs.io/pt-BR/)
 
 ### :large_blue_circle: Configurations
 
@@ -46,7 +49,7 @@ The UI was developed using the following technologies:
 2. Start the application
 
 ```
-   yarn dev
+   yarn start
 ```
 
 ### :computer: Using Docker

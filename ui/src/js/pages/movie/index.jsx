@@ -121,6 +121,24 @@ const MovieDetails = ({ toggleFavorite, favorites, movie }) => {
   );
 };
 
+MovieDetails.propTypes = {
+  favorites: PropTypes.shape({}).isRequired,
+  movie: PropTypes.shape({
+    Actors: PropTypes.string,
+    Country: PropTypes.string,
+    Director: PropTypes.string,
+    Genre: PropTypes.string,
+    Language: PropTypes.string,
+    Plot: PropTypes.string,
+    Poster: PropTypes.string,
+    Title: PropTypes.string,
+    Year: PropTypes.string,
+    imdbID: PropTypes.string,
+    imdbRating: PropTypes.string,
+  }).isRequired,
+  toggleFavorite: PropTypes.func.isRequired,
+}
+
 
 const ActionBar = ({ genre, id, idmb, toggleFavorite, isFavorite }) => {
   const classes = useStyles();
@@ -165,7 +183,7 @@ const MoviePage = ({ favorites, movies, dispatch }) => {
 
   useEffect(() => {
     fetchMovie(movieId);
-  }, []);
+  }, [movieId]);
 
   const fetchMovie = (id) => {
     console.log('searchedid', id);
@@ -227,13 +245,7 @@ MoviePage.propTypes = {
   dispatch: PropTypes.func.isRequired,
   favorites: PropTypes.shape({}),
   movies: PropTypes.arrayOf(
-    PropTypes.shape({
-      Poster: PropTypes.string,
-      Title: PropTypes.string,
-      imdbID: PropTypes.string,
-      minutes: PropTypes.string,
-      year: PropTypes.string,
-    })),
+    PropTypes.shape({})),
 }
 
 

@@ -91,7 +91,6 @@ const useStyles = makeStyles((theme) => ({
     top: '5%',
     width: 300,
     height: 400,
-    top: 67,
     transform: 'rotate(9deg) translateZ(0)',
     filter: 'drop-shadow(2px 4px 6px black)',
     borderRadius: '.75rem',
