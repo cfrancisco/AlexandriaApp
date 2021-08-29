@@ -1,0 +1,11 @@
+/.vscode/
+/vendor/
+/node_modules/
+/.idea
+/docroot/
+/npm-debug.log
+/.eslintcache
+/.env
+/coverage
+/dist
+/.parcel-cache

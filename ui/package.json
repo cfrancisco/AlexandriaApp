@@ -1,0 +1,85 @@
+{
+  "name": "alexandriaapp",
+  "version": "0.1.0",
+  "description": "UI for Alexandria movies library",
+  "engines": {
+    "npm": ">=7.0.14",
+    "node": ">=15.3.0"
+  },
+  "scripts": {
+    "dev": "parcel public/index.html -p 8800",
+    "build": "parcel build public/index.html",
+    "test": "yarn test --coverage",
+    "lint": "eslint . --ext .js,.jsx"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cfrancisco/alexandriaapp"
+  },
+  "keywords": [
+    "movies",
+    "library"
+  ],
+  "author": "Francisco Angelo Cabelo",
+  "license": "MIT",
+  "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
+    "axios": "^0.21.1",
+    "parcel": "^2.0.0-rc.0",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-hooks": "^1.0.1",
+    "react-loading": "^2.0.3",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.1.1",
+    "reduxsauce": "^1.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-plugin-flowtype": "^3.4.2",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react-hooks": "^4.0.7",
+    "jest": "^27.0.6",
+    "prettier": "^2.1.2"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageProvider": "v8",
+    "clearMocks": true,
+    "testTimeout": 30000,
+    "coverageDirectory": "<rootDir>/coverage",
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    },
+    "verbose": true,
+    "modulePathIgnorePatterns": [
+      "node_modules",
+      "lib"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/coverage"
+    ],
+    "automock": false,
+    "testRegex": "(/src/js/.*|\\.(test|spec))\\.(js|jsx)$",
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ]
+  }
+}
