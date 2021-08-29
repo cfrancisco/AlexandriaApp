@@ -4,14 +4,16 @@
     "es6": true,
     "node": true
   },
-  "plugins": ["prettier", "security", "security-node"],
+  "plugins": ["import", "prettier", "security", "security-node"],
   "extends": [
     "prettier",
     "airbnb-base",
+    "plugin:import/recommended",
     "plugin:security/recommended",
     "plugin:security-node/recommended"
   ],
   "rules": {
+    "import/no-unresolved": [0, { "commonjs": true, "amd": true }],
     "comma-dangle": [
       0,
       {

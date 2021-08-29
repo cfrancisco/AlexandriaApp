@@ -1,13 +1,13 @@
 ![LICENSE](https://img.shields.io/badge/license-MIT-red)
 ![Next Version](https://img.shields.io/badge/npm-7.0.14-blueviolet)
 ![Next Version](https://img.shields.io/badge/node-15.3.0-green)
-![CodeFactor](https://www.codefactor.io/repository/github/cfrancisco/alexandriaapp/backend/badge)
+[![CodeFactor](https://www.codefactor.io/repository/github/cfrancisco/alexandriaapp/badge/master)](https://www.codefactor.io/repository/github/cfrancisco/alexandriaapp/overview/master)
 ![codecov](https://codecov.io/gh/cfrancisco/alexandriaapp/backend/branch/master/graph/badge.svg)
-![Docker badge ](https://img.shields.io/docker/pulls/cfrancisco/alexandriaapp.svg)
+![Docker badge ](https://img.shields.io/badge/docker%20hub-cfrancisco10%2Falexbackend-blue.svg)
 
 # Alexandria - Backend
 
-The **Alexandria - Backend** is responsible for retrieving data from a third-party API and provides them using GraphQL schema.
+The **Alexandria - Backend** is responsible for retrieving movies catalogy from a third-party API and provides them using GraphQL schema.
 
 ## :zap: Technologies
 
@@ -18,15 +18,15 @@ The service was developed using the following technologies:
 
 ### :large_blue_circle: Configurations
 
-For now, the Configurations are made in a non-encrypted config file (./config.json), but should be improved in a future release.
+For now, the configurations are made in a non-encrypted config file (./config.json), but should be improved in a future release, being received as environment variables. In a real scenario, the API_KEY should be storage as 'Secrets', environment variables that are encrypted in github.
 
-| Environment variable | Description                          |
-| -------------------- | ------------------------------------ |
-| GRAPHIQL             | Used to enable the GraphQL UI        |
-| PORT                 | Port for starting the service        |
-| LOGGER_LEVEL         | Current Log Level                    |
-| API_KEY              | Key used in free version of OMDB API |
-| OMDB_HOST            | AddresS for OMDB API                 |
+| Config variable | Description                          |
+| --------------- | ------------------------------------ |
+| GRAPHIQL        | Used to enable the GraphQL UI        |
+| PORT            | Port for starting the service        |
+| LOGGER_LEVEL    | Current Log Level                    |
+| API_KEY         | Key used in free version of OMDB API |
+| OMDB_HOST       | URL to access OMDB API               |
 
 To access GraphiQL, graphical interface in GraphQL interactive, enable `graphiql` and access the url following the pattern below:
 
@@ -42,23 +42,31 @@ For example, the address could be:
 
 1. Build the Image
 
-$ docker build -f Dockerfile -t alexbackend .
+```
+   docker build -f Dockerfile -t alexbackend .
+```
 
 2. Run the docker compose
 
-   $ cd ..
+```
+   cd ..
 
-   $ docker-compose up -d
+   docker-compose up -d
+```
 
 ### :computer: For Development
 
 1. Install the dependencies
 
-   $ yarn install
+```
+   yarn install
+```
 
 2. Start the application
 
-   $ yarn dev
+```
+   yarn dev
+```
 
 ## :hourglass: Next Steps
 

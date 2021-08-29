@@ -11,7 +11,7 @@ COPY package-lock.json package-lock.json
 RUN npm install --only=prod
 
 COPY app ./app
-COPY config ./config
+COPY config.json ./config.json
 COPY index.js ./index.js
 
 #
