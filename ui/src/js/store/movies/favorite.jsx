@@ -18,10 +18,10 @@ export const { Types, Creators } = createActions({
 const INITIAL_STATE = {};
 
 const toggleFavorite = (state = INITIAL_STATE, action) => {
-  console.log(state, action);
+  // should always creating a new object
   const res = Object.assign({}, state);
   res[action.movieId] = !state[action.movieId];
-  return res
+  return res;
 };
 
 /**

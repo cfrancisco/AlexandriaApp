@@ -7,10 +7,11 @@
     "node": ">=15.3.0"
   },
   "scripts": {
-    "dev": "parcel public/index.html -p 8800",
+    "start": "parcel public/index.html -p 8800",
     "build": "parcel build public/index.html",
-    "test": "yarn test --coverage",
-    "lint": "eslint . --ext .js,.jsx"
+    "test": "jest '(/src/js/.*)(.test.jsx)' --verbose --coverage --env=jsdom",
+    "lint": "eslint . --ext .js,.jsx",
+    "lint:fix": "eslint --fix --ext .js ."
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
   "author": "Francisco Angelo Cabelo",
   "license": "MIT",
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.15.0",
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
     "axios": "^0.21.1",
@@ -35,13 +37,17 @@
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "redux": "^4.1.1",
-    "reduxsauce": "^1.2.1"
+    "reduxsauce": "^1.2.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-react": "^7.14.5",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
     "eslint": "^5.12.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-security": "^1.4.0",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-plugin-flowtype": "^3.4.2",
     "eslint-plugin-import": "^2.16.0",
@@ -49,12 +55,13 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-react-hooks": "^4.0.7",
+    "eslint-plugin-security": "^1.4.0",
     "jest": "^27.0.6",
+    "jest-prop-type-error": "^1.1.0",
     "prettier": "^2.1.2"
   },
   "jest": {
     "collectCoverage": true,
-    "coverageProvider": "v8",
     "clearMocks": true,
     "testTimeout": 30000,
     "coverageDirectory": "<rootDir>/coverage",
@@ -66,6 +73,9 @@
         "statements": 80
       }
     },
+    "setupFiles": [
+      "jest-prop-type-error"
+    ],
     "verbose": true,
     "modulePathIgnorePatterns": [
       "node_modules",
@@ -75,8 +85,6 @@
       "<rootDir>/node_modules/",
       "<rootDir>/coverage"
     ],
-    "automock": false,
-    "testRegex": "(/src/js/.*|\\.(test|spec))\\.(js|jsx)$",
     "moduleFileExtensions": [
       "js",
       "jsx"

@@ -1,43 +1,54 @@
-import React from 'react';
 
-import { render, fireEvent } from '@testing-library/react';
-import Bar from 'Assets/images/bar.png';
-import '@testing-library/jest-dom/extend-expect';
-import Card from './index';
+import React from "react";
 
-describe('ImageCard', () => {
-  const title = 'Gráfico de Barras';
-  const description = 'Representa os dados por barras';
+import { render, fireEvent, screen } from '@testing-library/react'
+import '@testing-library/jest-dom'
+import { BrowserRouter } from 'react-router-dom';
 
-  it('should to able simple render ', () => {
-    const { container, getByTestId } = render(
-      <ImageCard
-        title={title}
-        image={Bar}
-        description={description}
-        handleClick={() => { }}
-      />,
-    );
+import Card from "./card";
+
+
+describe('Card', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it("renders with all props", () => {
+    const { container } = render(
+      <BrowserRouter>
+        <Card
+          toggleFavorite={() => { }}
+          title="My Favorite Movie"
+          poster=""
+          year="2021"
+          id="idRandom"
+          rating="10.0"
+          name="Jenny"
+        />
+      </BrowserRouter>);
+    expect(container).toBeInTheDocument();
+    expect(screen.getByRole('link')).toHaveTextContent("10.0My Favorite Movie2021");
+  });
+
+  it("checking Link to details page", () => {
+    global.window = { location: { pathname: null } }
+
+    const { container } = render(
+      <BrowserRouter>
+        <Card
+          toggleFavorite={() => { }}
+          title="My Favorite Movie"
+          poster=""
+          year="2021"
+          id="idRandom"
+          rating="10.0"
+          name="Jenny"
+        />
+      </BrowserRouter>);
 
     expect(container).toBeInTheDocument();
-    expect(getByTestId('title').innerHTML).toEqual(title);
-    expect(getByTestId('description').innerHTML).toEqual(description);
+    fireEvent.click(screen.getByRole('link'));
+    expect(global.window.location.pathname).toEqual('/movies:idRandom');
   });
 
-  it('should to able to click on card ', () => {
-    const mockedHandleClick = jest.fn();
-
-    const { getByTestId } = render(
-      <ImageCard
-        title={title}
-        image={Bar}
-        description={description}
-        handleClick={mockedHandleClick}
-      />,
-    );
-
-    const cardAction = getByTestId('card-action');
-    fireEvent.click(cardAction);
-    expect(mockedHandleClick).toHaveBeenCalled();
-  });
 });

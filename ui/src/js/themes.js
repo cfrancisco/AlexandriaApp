@@ -1,9 +1,7 @@
 /*
-This file is planned to contains all custom style (Design Tokens) to be applied
-on Material UI Theme;
+This file is planned to contains all custom style (Design Tokens)
+to be applied on Material UI Theme;
 */
-
-import { grey, red, blue } from '@material-ui/core/colors';
 
 const myStyles = {
   root: {
@@ -15,6 +13,9 @@ const myStyles = {
   palette: {
     type: 'dark',
     bgColor: '#303030',
+    background: {
+      default: "#303030",
+    },
     primary: {
       main: '#055E68',
     },

@@ -28,7 +28,7 @@ For now, the configurations are made in a non-encrypted config file (./config.js
 | API_KEY         | Key used in free version of OMDB API |
 | OMDB_HOST       | URL to access OMDB API               |
 
-To access GraphiQL, graphical interface in GraphQL interactive, enable `graphiql` and access the url following the pattern below:
+In order to access GraphiQL, graphical interface in GraphQL interactive, it should be enabled `graphiql` variable and access the following url:
 
 `http{s}://{host}:{port}/movies/graphql/`
 
@@ -65,7 +65,7 @@ For example, the address could be:
 2. Start the application
 
 ```
-   yarn dev
+   yarn start
 ```
 
 ## :hourglass: Next Steps

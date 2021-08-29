@@ -10,60 +10,51 @@
 **Alexandria** is an application to display information about the searched movies, showing its poster, IMDB rating and also allows you favorite it.
 These information are received directly from an graphql api.
 
-## :page_facing_up: Introduction
+## :white_check_mark: Table of Contents
 
-Alexandria is a simple application developed using React, Material-UI, and Parcel. The app contains two main screens:
+1. [Front-End](#front-end)
+2. [Back-End](#back-end)
+2. [Technologies](#technologies)
+3. [How To Run](#how-to-run)
+4. [Screenshots](#screenshots)
+6. [License](#license)
+
+## :page_facing_up: Front-End
+
+Alexandria is a simple application developed using React, Material-UI, and Parcel. The Front End App contains two main screens:
 
 - Home screen, where the user receives recommendations or search for a movie;
 - Details screen, where is shown the movies details, as director, actors, release year, and others information.
 
-## :zap: Technologies
-
-The UI was developed using the following technologies:
-
-- [React v17.0.1](https://reactjs.org/)
-- [Parcel v2.0](https://parceljs.org/)
-- [Material UI v4.12](https://material-ui.com/)
-- [GraphQL v15.5.1](https://graphql.org/)
-
-### :large_blue_circle: Configurations
-
-| Config variable | Description                         |
-| --------------- | ----------------------------------- |
-| BACKEND_PORT    | Port used to access backend service |
-| BACKEND_URL     | URL to access backend service       |
 
 ## :zap: How to run
 
+## :page_facing_up: Back-End
+
+The **Alexandria - Backend** is responsible for retrieving movies catalogy from a third-party API and provides them using GraphQL schema.
+
+## :zap: Technologies
+
+<div style="display: flex, flex-direction: row, align-items: center, justify-content: center">
+<img src="https://raw.githubusercontent.com/cfrancisco/alexandriaapp/main/.github/ss3.png" alt="Technologies" width="24%"/>
+</div>
+
+
 ### :computer: Using Docker
 
-1. Build the Image
+You should install docker and docker-compose before running the project.
 
+1. Clone the project
 ```
-   docker build -f Dockerfile -t alexfrontend .
+  git clone https://github.com/cfrancisco/alexandriaapp.git
 ```
-
-2. Run the docker compose
-
+ 
+2. Start the containers
 ```
-   cd ..
-
-   docker-compose up -d
+$ docker-compose up -d
 ```
 
-### :computer: For Development
-
-1. Install the dependencies
-
-```
-   yarn install
-```
-
-2. Start the application
-
-```
-   yarn dev
-```
+3. Open the project's URL: localhost:8800
 
 ## :large_blue_circle: Screenshots
 
@@ -71,14 +62,6 @@ The UI was developed using the following technologies:
 <img src="https://raw.githubusercontent.com/cfrancisco/alexandriaapp/main/.github/ss1.png" alt="Home Screen" width="24%"/>
 </div>
 
-## :hourglass: Next Steps
-
-- Tests
-- Responsiveness
-- UI/UX improvements
-- a11y
-- i18n
-- github actions
 
 ## :handshake: License
 

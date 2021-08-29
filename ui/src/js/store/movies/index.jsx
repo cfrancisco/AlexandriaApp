@@ -4,5 +4,5 @@ import favorite from "./favorite";
 import movies from "./movies";
 
 export default combineReducers({
-  movies, favorite
+  movies, favorite,
 });

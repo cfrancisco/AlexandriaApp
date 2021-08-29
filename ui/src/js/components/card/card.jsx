@@ -43,6 +43,10 @@ const PosterCard = ({ toggleFavorite, id, poster, rating, title, year, isFavorit
   );
 };
 
+PosterCard.defaultProps = {
+  isFavorite: false,
+};
+
 PosterCard.propTypes = {
   toggleFavorite: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
@@ -50,6 +54,7 @@ PosterCard.propTypes = {
   year: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   rating: PropTypes.string.isRequired,
+  isFavorite: PropTypes.bool,
 };
 
 export default PosterCard;

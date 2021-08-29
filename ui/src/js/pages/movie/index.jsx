@@ -1,12 +1,22 @@
-import React from 'react';
+import PropTypes from "prop-types";
+import React, { useState, useEffect } from 'react';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import { Link, useParams } from 'react-router-dom';
+import StarIcon from '@material-ui/icons/Star';
+import { connect } from 'react-redux';
+
 import useStyles from './style';
+import { getMovieById } from '../../api/movies';
+import WatchButton from '../../components/buttons/watchButton';
 
 const TitleBox = ({ title }) => {
   const classes = useStyles();
   return <div className={classes.titleBox}>{title}</div>;
 };
+
+TitleBox.propTypes = {
+  title: PropTypes.string.isRequired,
+}
 
 const Poster = ({ poster, title }) => {
   const classes = useStyles();
@@ -22,10 +32,18 @@ const Poster = ({ poster, title }) => {
   );
 };
 
+Poster.propTypes = {
+  title: PropTypes.string.isRequired,
+  poster: PropTypes.string.isRequired,
+}
+
+
 const Description = ({ cast, description, genre, director }) => {
   const classes = useStyles();
   return (
     <>
+      <WatchButton value="asdasd" />
+
       <div className={classes.description}>
         Plot:
         {' '}
@@ -50,27 +68,82 @@ const Description = ({ cast, description, genre, director }) => {
   );
 };
 
-const ActionBar = ({ idmb, toggleFavorite, isFavorite }) => {
-  const classes = useStyles();
+Description.propTypes = {
+  cast: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  genre: PropTypes.string.isRequired,
+  director: PropTypes.string.isRequired,
+}
 
-  const BtnFavorite = isFavorite ? (
-    <div className={classes.favoriteBox} onClick={toggleFavorite}>
-      {title}
-    </div>
-  ) : null;
+
+const ActionBar = ({ id, idmb, toggleFavorite, isFavorite }) => {
+  const classes = useStyles();
 
   return (
     <>
       <div className={classes.idmb}>{idmb}</div>
-      <BtnFavorite />
+      {!isFavorite ? (
+        <StarIcon
+          onClick={() => toggleFavorite(id)}
+          alt="favorite this movie"
+          className={classes.isfavorite} />
+      ) : (
+        <StarIcon
+          onClick={() => toggleFavorite(id)}
+          alt="remove favorite"
+          className={classes.notfavorite} />
+      )}
     </>
   );
 };
 
+ActionBar.propTypes = {
+  id: PropTypes.string.isRequired,
+  idmb: PropTypes.string.isRequired,
+  toggleFavorite: PropTypes.func.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
+}
+
+
+
 // We can use the `useParams` hook here to access
 // the dynamic pieces of the URL.
-const MoviePage = (props) => {
+const MoviePage = ({ favorites, movie, dispatch }) => {
+
   const { movieId } = useParams();
+
+  useEffect(() => {
+    fetchMovie({ id: movieId });
+  }, []);
+
+  const fetchMovie = (id) => {
+    console.log('searchedid', id);
+    return getMovieById(id).then((data) => {
+      // dispatch
+      console.log('Coments', data);
+      if (data) {
+        // add favorites in data
+        dispatch({
+          type: 'GET_MOVIE',
+          data,
+        });
+      }
+      else {
+        dispatch({
+          type: 'GET_MOVIE',
+          data: [],
+        });
+      }
+    });
+  };
+
+  const toggleFavorite = (id) => {
+    dispatch({
+      type: 'TOGGLE_FAVORITE',
+      id,
+    })
+  };
+
 
   return (
     <>
@@ -78,14 +151,31 @@ const MoviePage = (props) => {
         {' '}
         <KeyboardBackspaceIcon />
       </Link>
-      {minutes}
-      {year}
-      <TitleBox />
-      <ActionBar />
+      {movie.minutes}
+      {movie.year}
+      <TitleBox title={movie.Title} />
+      <ActionBar
+        id={movieId}
+        idmb={movie.imdbID}
+        isFavorite={favorites[movie.imdbID]}
+        toggleFavorite={toggleFavorite} />
       <Description />
-      <Poster />
+      <Poster poster={movie.Poster} title={movie.Title} />
     </>
   );
 };
 
-export default MoviePage;
+
+MoviePage.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  favorites: PropTypes.shape({}).isRequired,
+  movie: PropTypes.ArrayOf(PropTypes.shape({})).isRequired,
+}
+
+
+const mapStateToProps = (state) => ({
+  movie: { ...state.movies[0] },
+  favorites: { ...state.favorite },
+});
+
+export default connect(mapStateToProps, null)(MoviePage);
