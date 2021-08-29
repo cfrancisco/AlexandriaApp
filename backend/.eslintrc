@@ -23,7 +23,6 @@
       }
     ],
     "quotes": ["error", "double"],
-    "prettier/prettier": "error",
     "no-multiple-empty-lines": [
       "error",
       {

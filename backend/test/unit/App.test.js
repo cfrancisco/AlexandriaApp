@@ -1,6 +1,5 @@
-// jest.mock("express");
-
 const mockUse = jest.fn();
+
 const mockExpress = jest.fn().mockImplementation(() => ({
   use: mockUse,
 }));
@@ -16,7 +15,7 @@ const mockLogger = {
   warn: jest.fn(),
 };
 
-describe("App", () => {
+describe("Test App", () => {
   let app = null;
   beforeAll(() => {
     app = null;

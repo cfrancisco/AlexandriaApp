@@ -23,6 +23,3 @@ node_modules/
 .vscode-test
 .idea/*
 .devcontainer
-
-# Ignore generate configs
-config/*.json

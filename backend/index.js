@@ -1,14 +1,6 @@
-const pino = require("pino");
-
-const logger = pino({
-  prettyPrint: {
-    colorize: true,
-    ignore: "pid,hostname",
-  },
-  level: "debug",
-});
-
 const App = require("./app/App");
+
+const { logger } = require("./app/Logger");
 
 // Initializing the service...
 (async () => {

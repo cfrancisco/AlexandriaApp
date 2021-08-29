@@ -1,25 +1,17 @@
-const pino = require("pino");
-
 const util = require("util");
 
 const { Movies } = require("./services/omdb");
 
-const logger = pino({
-  prettyPrint: {
-    colorize: true,
-    ignore: "pid,hostname",
-  },
-  level: "debug",
-});
+const { logger } = require("./Logger");
 
 /**
  * Fetch data after using a GraphQL query following the params below
  *
  * @param {String} title Movie's Title
  * @param {String} id Movie's Unique ID
- * @param {Boolean} isSpecific is for a detaits page
- * @param {Number} page initial page number
- * @param {String} plot short or long plot
+ * @param {Boolean} isSpecific if is for a details page
+ * @param {Number} page page number
+ * @param {String} plot 'short' or 'long' plot
  *
  * @returns {Promise.<{result: [{data...}| error>}
  *           A promise that returns a list of Movies
@@ -54,6 +46,7 @@ const queryDataUsingGraphql = async (title, id, isSpecific, page, plot) => {
       result = { movies: res.data.Search };
     }
     logger.debug("queryUsingGraphql: Data received successfully.");
+
     return Promise.resolve(result);
   } catch (e) {
     logger.error("queryUsingGraphql:", e);

@@ -1,3 +1,10 @@
+![LICENSE](https://img.shields.io/badge/license-MIT-red)
+![Next Version](https://img.shields.io/badge/npm-7.0.14-blueviolet)
+![Next Version](https://img.shields.io/badge/node-15.3.0-green)
+![CodeFactor](https://www.codefactor.io/repository/github/cfrancisco/alexandriaapp/backend/badge)
+![codecov](https://codecov.io/gh/cfrancisco/alexandriaapp/backend/branch/master/graph/badge.svg)
+![Docker badge ](https://img.shields.io/docker/pulls/cfrancisco/alexandriaapp.svg)
+
 # Alexandria - Backend
 
 The **Alexandria - Backend** is responsible for retrieving data from a third-party API and provides them using GraphQL schema.
@@ -6,40 +13,62 @@ The **Alexandria - Backend** is responsible for retrieving data from a third-par
 
 The service was developed using the following technologies:
 
-- [Redis v6.2.5](https://redis.io/)
 - [NodeJs v14.17.5](https://nodejs.org/en/)
 - [GraphQL v15.5.1](https://graphql.org/)
 
 ### :large_blue_circle: Configurations
 
-| Environment variable | Description                   |
-| -------------------- | ----------------------------- |
-| GRAPHQL_EDITOR       | Used to enable the GraphQL UI |
-| HISTORYPROXY_PORT    | Port for starting the service |
+For now, the Configurations are made in a non-encrypted config file (./config.json), but should be improved in a future release.
 
-To access GraphiQL, graphical interface in GraphQL interactive (it is also possible to see the documentation) enable `graphql.graphiql` and access the url it follows this pattern:
+| Environment variable | Description                          |
+| -------------------- | ------------------------------------ |
+| GRAPHIQL             | Used to enable the GraphQL UI        |
+| PORT                 | Port for starting the service        |
+| LOGGER_LEVEL         | Current Log Level                    |
+| API_KEY              | Key used in free version of OMDB API |
+| OMDB_HOST            | AddresS for OMDB API                 |
 
-`http{s}://{host}:{port}/graphql/`
+To access GraphiQL, graphical interface in GraphQL interactive, enable `graphiql` and access the url following the pattern below:
+
+`http{s}://{host}:{port}/movies/graphql/`
 
 For example, the address could be:
 
-`http://localhost:3000/graphql/`
+`http://localhost:3000/movies/graphql/`
 
 ## :zap: How to run
 
-### :computer: For Development mode
+### :computer: Using Docker
+
+1. Build the Image
+
+$ docker build -f Dockerfile -t alexbackend .
+
+2. Run the docker compose
+
+   $ cd ..
+
+   $ docker-compose up -d
+
+### :computer: For Development
 
 1. Install the dependencies
+
    $ yarn install
+
 2. Start the application
+
    $ yarn dev
 
-### Next Steps
+## :hourglass: Next Steps
 
-1 - Create Graphql For Ratings options
+- More Unit Tests (Handle expection cases)
+- Create Graphql schema to fetch information about Ratings
+- Manage Favorite data using a Relational DB
+- Improve Security and blocks CORS
+- Apply Performance tests
+- Apply GraphQL Union type and create its resolvers
 
-## License
+## :handshake: License
 
-The History Proxy source code is released under Apache License 2.0.
-
-Check NOTICE and LICENSE files for more information.
+The project is licensed under the MIT License. See the [LICENSE](https://github.com/cfrancisco/alexandriaapp/blob/main/LICENSE) file for details.

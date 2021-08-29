@@ -1,16 +1,17 @@
 const express = require("express");
 
 const cors = require("cors");
+
 const { graphqlRoute } = require("./routes/Movies");
 
-const PORT = 3000;
+const config = require("../config.json");
+
 /**
  * Wrapper to initialize the service
  */
 class App {
   /**
    * Constructor App
-   * that instantiate
    */
   constructor(logger) {
     this.logger = logger;
@@ -26,7 +27,7 @@ class App {
   }
 
   /**
-   * Initialize the server and influxdb
+   * Initialize the server
    */
   async init() {
     this.logger.info("init: Initializing the alexandria-backend...");
@@ -37,8 +38,8 @@ class App {
       this.server.use(cors());
       this.server.use(graphqlRoute.mountPoint, graphqlRoute.middleware);
 
-      this.server.listen(PORT, () => {
-        this.logger.info(`init: App listening at port:${PORT}`);
+      this.server.listen(config.PORT, () => {
+        this.logger.info(`init: App listening at port:${config.PORT}`);
       });
     } catch (e) {
       this.logger.error("init:", e.message);

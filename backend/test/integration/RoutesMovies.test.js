@@ -4,17 +4,11 @@ const express = require("express");
 
 const { graphqlRoute } = require("../../app/routes/Movies");
 
-const mockQueryDataUsingGraphql = jest.fn();
-
-const mockQueries = jest.fn().mockImplementation(() => ({
-  queryDataUsingGraphql: mockQueryDataUsingGraphql,
-}));
-
 // jest.spyOn(axios, 'get');
 /*
 queryDataUsingGraphql.mockImplementation(() => {
-  console.log("asdasd");
 });
+const mockQueryDataUsingGraphql = jest.fn();
 
 mockQueryDataUsingGraphql.mockImplementationOnce(
       (title, id, isSpecific, page, plot) => {
@@ -105,7 +99,7 @@ describe("Test Movies Routes", () => {
           errors: [
             {
               locations: [{ column: 11, line: 3 }],
-              message: 'Cannot query field "data" on type "FetchedData".',
+              message: "Cannot query field \"data\" on type \"FetchedData\".",
             },
           ],
         });

@@ -3,7 +3,7 @@
 
 FROM node:15.3-alpine AS base
 
-WORKDIR /opt/albackend
+WORKDIR /opt/alexbackend
 
 COPY package.json package.json
 COPY package-lock.json package-lock.json
@@ -20,11 +20,10 @@ COPY index.js ./index.js
 
 FROM node:15.3-alpine
 
-WORKDIR /opt/albackend
- 
-COPY --from=base /opt/albackend /opt/albackend
+WORKDIR /opt/alexbackend
+
+COPY --from=base /opt/alexbackend /opt/alexbackend
 
 ENTRYPOINT ["/sbin/tini", "--"]
 
 CMD ["npm", "run", "start"]
- 

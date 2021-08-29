@@ -1,0 +1,7 @@
+{
+  "PORT": 3000,
+  "API_KEY": "8c4adbd7",
+  "GRAPHIQL": true,
+  "LOGGER_LEVEL": "debug",
+  "OMDB_HOST": "http://www.omdbapi.com"
+}
