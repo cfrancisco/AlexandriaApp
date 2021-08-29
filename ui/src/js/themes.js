@@ -4,6 +4,13 @@ to be applied on Material UI Theme;
 */
 
 const myStyles = {
+  overrides: {
+    MuiPaper: {
+      root: {
+        background: "linear-gradient( 90deg , #313131 0%, #000000 100%)",
+      },
+    },
+  },
   root: {
     display: 'flex',
   },

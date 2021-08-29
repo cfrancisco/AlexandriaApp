@@ -1,15 +1,16 @@
+
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import { Link, useParams } from 'react-router-dom';
 import StarIcon from '@material-ui/icons/Star';
 import { connect } from 'react-redux';
+import Chip from '@material-ui/core/Chip';
 
 import Grid from '@material-ui/core/Grid';
 import ReactLoading from 'react-loading';
 import useStyles from './style';
 import { getMovieById } from '../../api/movies';
-import WatchButton from '../../components/buttons/watchButton';
 
 
 const TitleBox = ({ title }) => {
@@ -41,31 +42,31 @@ Poster.propTypes = {
 }
 
 
-const Description = ({ cast, description, genre, director }) => {
+const Description = ({ actors, description, language, director }) => {
   const classes = useStyles();
   return (
     <>
-
       <Grid container spacing={2}>
         <Grid item xs={12} className={classes.description}>
-          Plot:
-          {' '}
-          <span>{description}</span>
+          <span>
+            <br />
+            {description}
+          </span>
         </Grid>
-        <Grid className={classes.columnInfo} item xs={4}>
-          Cast:
+        <Grid item xs={4}>
+          Actors:&nbsp;
           {' '}
-          <span>{cast}</span>
+          <span className={classes.columnInfo}>{actors}</span>
         </Grid>
-        <Grid className={classes.columnInfo} item xs={4}>
-          Genre:
+        <Grid item xs={4}>
+          Language:&nbsp;
           {' '}
-          <span>{genre}</span>
+          <span className={classes.columnInfo}>{language}</span>
         </Grid>
-        <Grid className={classes.columnInfo} item xs={4}>
-          Director:
+        <Grid item xs={4}>
+          Director:&nbsp;
           {' '}
-          <span>{director}</span>
+          <span className={classes.columnInfo}>{director}</span>
         </Grid>
       </Grid>
 
@@ -74,9 +75,9 @@ const Description = ({ cast, description, genre, director }) => {
 };
 
 Description.propTypes = {
-  cast: PropTypes.string.isRequired,
+  actors: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
+  language: PropTypes.string.isRequired,
   director: PropTypes.string.isRequired,
 }
 
@@ -85,17 +86,16 @@ Description.propTypes = {
 const MovieDetails = ({ toggleFavorite, favorites, movie }) => {
   const classes = useStyles();
   if (!movie)
-    return <ReactLoading />;
-
+    return <ReactLoading className={classes.loading} />;
   return (
     <>
       <Grid item xs={12}>
         <span className={classes.minorInfos}>
           {' '}
-          {movie.minutes}
+          {movie.Country}
         </span>
         <span className={classes.minorInfos}>
-          {movie.year}
+          {movie.Year}
         </span>
       </Grid>
       <Grid item xs={6}>
@@ -108,47 +108,53 @@ const MovieDetails = ({ toggleFavorite, favorites, movie }) => {
         <ActionBar
           id={movie.imdbID}
           idmb={movie.imdbRating}
+          genre={movie.Genre}
           isFavorite={favorites[movie.imdbID]}
           toggleFavorite={toggleFavorite} />
-        <Description />
+        <Description
+          director={movie.Director}
+          description={movie.Plot}
+          language={movie.Language}
+          actors={movie.Actors} />
       </Grid>
     </>
   );
 };
 
 
-
-const ActionBar = ({ id, idmb, toggleFavorite, isFavorite }) => {
+const ActionBar = ({ genre, id, idmb, toggleFavorite, isFavorite }) => {
   const classes = useStyles();
 
   return (
-    <>
-
-      <div className={classes.idmb}>{idmb}</div>
-      <WatchButton value={
-        !isFavorite ? (
+    <div className={classes.idmb}>
+      <Chip className={classes.chipRating} label={idmb} variant="outlined" />
+      <Chip label={genre} variant="outlined" />
+      <Chip
+        className={classes.chip}
+        variant="outlined"
+        label="Favorite"
+        onClick={() => toggleFavorite(id)}
+        icon={!isFavorite ? (
           <StarIcon
-            onClick={() => toggleFavorite(id)}
             alt="favorite this movie"
             className={classes.isfavorite} />
         ) : (
           <StarIcon
-            onClick={() => toggleFavorite(id)}
             alt="remove favorite"
             className={classes.notfavorite} />
         )
-      } />
-    </>
+        } />
+    </div>
   );
 };
 
 ActionBar.propTypes = {
   id: PropTypes.string.isRequired,
+  genre: PropTypes.string.isRequired,
   idmb: PropTypes.string.isRequired,
   toggleFavorite: PropTypes.func.isRequired,
   isFavorite: PropTypes.bool.isRequired,
 }
-
 
 
 // We can use the `useParams` hook here to access
@@ -180,9 +186,10 @@ const MoviePage = ({ favorites, movies, dispatch }) => {
   };
 
   const toggleFavorite = (id) => {
+    console.log("toggleFavorite", id);
     dispatch({
       type: 'TOGGLE_FAVORITE',
-      id,
+      movieId: id,
     })
   };
 
@@ -192,12 +199,19 @@ const MoviePage = ({ favorites, movies, dispatch }) => {
         {' '}
         <KeyboardBackspaceIcon />
       </Link>
-      <Grid container spacing={2}>
-        <MovieDetails
-          toggleFavorite={toggleFavorite}
-          favorites={favorites}
-          movie={movies[0]} />
-      </Grid>
+
+      <div className={classes.page}>
+        <Grid container spacing={2}>
+          <Grid item lg={1} md={1} sm={0} />
+          <Grid item lg={11} md={11} sm={12}>
+            <MovieDetails
+              toggleFavorite={toggleFavorite}
+              favorites={favorites}
+              movie={movies[0]} />
+          </Grid>
+
+        </Grid>
+      </div>
     </>
   );
 };

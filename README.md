@@ -6,9 +6,10 @@
 
 # Alexandria
 
-**Alexandria** is an 40-hour project created for displays information about the searched movies, including their poster, IMDB ratings, as well as the ability to favorite them. 
+**Alexandria** is a 40-hour project created for displays information about the searched movies, including their poster, IMDB ratings, as well as the ability to favorite them. 
 <div style="display: flex, flex-direction: row, align-items: center, justify-content: center">
 <img src="https://github.com/cfrancisco/AlexandriaApp/blob/master/.github/ss1.png?raw=true" alt="Home Screen" width="50%"/>
+<img src="https://github.com/cfrancisco/AlexandriaApp/blob/master/.github/ss2.png?raw=true" alt="Home Screen" width="50%"/>
 </div>
 
 ## :white_check_mark: Table of Contents

@@ -11,13 +11,13 @@ services:
     ports:
       - 3000:3000
 
-  # alexfrontend:
-  #   image: cfrancisco10/alexfrontend
-  #   restart: always
-  #   logging:
-  #     driver: json-file
-  #     options:
-  #       max-size: 20m
-  #       max-file: '5'
-  #   ports:
-  #     - 8800:8800
+  alexfrontend:
+    image: cfrancisco10/alexfrontend
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: 20m
+        max-file: '5'
+    ports:
+      - 8800:8800

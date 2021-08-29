@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #fff;
+  font-size: 0.875rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  line-height: 1.43;
+  background: linear-gradient(90deg, #313131 0%, #000000 100%);
+}
