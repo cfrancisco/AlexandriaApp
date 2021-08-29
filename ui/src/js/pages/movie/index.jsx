@@ -5,9 +5,12 @@ import { Link, useParams } from 'react-router-dom';
 import StarIcon from '@material-ui/icons/Star';
 import { connect } from 'react-redux';
 
+import Grid from '@material-ui/core/Grid';
+import ReactLoading from 'react-loading';
 import useStyles from './style';
 import { getMovieById } from '../../api/movies';
 import WatchButton from '../../components/buttons/watchButton';
+
 
 const TitleBox = ({ title }) => {
   const classes = useStyles();
@@ -42,28 +45,30 @@ const Description = ({ cast, description, genre, director }) => {
   const classes = useStyles();
   return (
     <>
-      <WatchButton value="asdasd" />
 
-      <div className={classes.description}>
-        Plot:
-        {' '}
-        <span>{description}</span>
-      </div>
-      <div className={classes.columnInfo}>
-        Cast:
-        {' '}
-        <span>{cast}</span>
-      </div>
-      <div className={classes.columnInfo}>
-        Genre:
-        {' '}
-        <span>{genre}</span>
-      </div>
-      <div className={classes.columnInfo}>
-        Director:
-        {' '}
-        <span>{director}</span>
-      </div>
+      <Grid container spacing={2}>
+        <Grid item xs={12} className={classes.description}>
+          Plot:
+          {' '}
+          <span>{description}</span>
+        </Grid>
+        <Grid className={classes.columnInfo} item xs={4}>
+          Cast:
+          {' '}
+          <span>{cast}</span>
+        </Grid>
+        <Grid className={classes.columnInfo} item xs={4}>
+          Genre:
+          {' '}
+          <span>{genre}</span>
+        </Grid>
+        <Grid className={classes.columnInfo} item xs={4}>
+          Director:
+          {' '}
+          <span>{director}</span>
+        </Grid>
+      </Grid>
+
     </>
   );
 };
@@ -76,23 +81,63 @@ Description.propTypes = {
 }
 
 
+
+const MovieDetails = ({ toggleFavorite, favorites, movie }) => {
+  const classes = useStyles();
+  if (!movie)
+    return <ReactLoading />;
+
+  return (
+    <>
+      <Grid item xs={12}>
+        <span className={classes.minorInfos}>
+          {' '}
+          {movie.minutes}
+        </span>
+        <span className={classes.minorInfos}>
+          {movie.year}
+        </span>
+      </Grid>
+      <Grid item xs={6}>
+        <TitleBox title={movie.Title} />
+      </Grid>
+      <Grid item xs={6}>
+        <Poster poster={movie.Poster} title={movie.Title} />
+      </Grid>
+      <Grid item xs={6}>
+        <ActionBar
+          id={movie.imdbID}
+          idmb={movie.imdbRating}
+          isFavorite={favorites[movie.imdbID]}
+          toggleFavorite={toggleFavorite} />
+        <Description />
+      </Grid>
+    </>
+  );
+};
+
+
+
 const ActionBar = ({ id, idmb, toggleFavorite, isFavorite }) => {
   const classes = useStyles();
 
   return (
     <>
+
       <div className={classes.idmb}>{idmb}</div>
-      {!isFavorite ? (
-        <StarIcon
-          onClick={() => toggleFavorite(id)}
-          alt="favorite this movie"
-          className={classes.isfavorite} />
-      ) : (
-        <StarIcon
-          onClick={() => toggleFavorite(id)}
-          alt="remove favorite"
-          className={classes.notfavorite} />
-      )}
+      <WatchButton value={
+        !isFavorite ? (
+          <StarIcon
+            onClick={() => toggleFavorite(id)}
+            alt="favorite this movie"
+            className={classes.isfavorite} />
+        ) : (
+          <StarIcon
+            onClick={() => toggleFavorite(id)}
+            alt="remove favorite"
+            className={classes.notfavorite} />
+        )
+      } />
     </>
   );
 };
@@ -108,21 +153,18 @@ ActionBar.propTypes = {
 
 // We can use the `useParams` hook here to access
 // the dynamic pieces of the URL.
-const MoviePage = ({ favorites, movie, dispatch }) => {
-
+const MoviePage = ({ favorites, movies, dispatch }) => {
   const { movieId } = useParams();
+  const classes = useStyles();
 
   useEffect(() => {
-    fetchMovie({ id: movieId });
+    fetchMovie(movieId);
   }, []);
 
   const fetchMovie = (id) => {
     console.log('searchedid', id);
     return getMovieById(id).then((data) => {
-      // dispatch
-      console.log('Coments', data);
       if (data) {
-        // add favorites in data
         dispatch({
           type: 'GET_MOVIE',
           data,
@@ -144,23 +186,18 @@ const MoviePage = ({ favorites, movie, dispatch }) => {
     })
   };
 
-
   return (
     <>
-      <Link to='/'>
+      <Link className={classes.link} to='/'>
         {' '}
         <KeyboardBackspaceIcon />
       </Link>
-      {movie.minutes}
-      {movie.year}
-      <TitleBox title={movie.Title} />
-      <ActionBar
-        id={movieId}
-        idmb={movie.imdbID}
-        isFavorite={favorites[movie.imdbID]}
-        toggleFavorite={toggleFavorite} />
-      <Description />
-      <Poster poster={movie.Poster} title={movie.Title} />
+      <Grid container spacing={2}>
+        <MovieDetails
+          toggleFavorite={toggleFavorite}
+          favorites={favorites}
+          movie={movies[0]} />
+      </Grid>
     </>
   );
 };
@@ -169,18 +206,25 @@ const MoviePage = ({ favorites, movie, dispatch }) => {
 
 MoviePage.defaultProps = {
   favorites: {},
-  movie: {},
+  movies: [],
 }
 
 MoviePage.propTypes = {
   dispatch: PropTypes.func.isRequired,
   favorites: PropTypes.shape({}),
-  movie: PropTypes.shape({}),
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      Poster: PropTypes.string,
+      Title: PropTypes.string,
+      imdbID: PropTypes.string,
+      minutes: PropTypes.string,
+      year: PropTypes.string,
+    })),
 }
 
 
 const mapStateToProps = (state) => ({
-  movie: { ...state.movies[0] },
+  movies: [...state.movies],
   favorites: { ...state.favorite },
 });
 

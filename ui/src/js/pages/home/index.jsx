@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from 'react';
-import ReactLoading from 'react-loading';
 import { connect } from 'react-redux';
 
 import SearchBar from '../../components/searchBar/searchBar';

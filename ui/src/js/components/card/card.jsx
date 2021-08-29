@@ -22,7 +22,7 @@ const PosterCard = ({ toggleFavorite, id, poster, rating, title, year, isFavorit
           alt="remove favorite"
           className={classes.notfavorite} />
       )}
-      <Link to={`/movies:${id}`}>
+      <Link to={`/movie/${id}`}>
 
         <img
           src={poster}

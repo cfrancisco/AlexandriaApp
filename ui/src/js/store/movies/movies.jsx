@@ -6,6 +6,7 @@ import { createActions, createReducer } from "reduxsauce";
  */
 export const { Types, Creators } = createActions({
   getMovies: [],
+  getMovie: [],
 });
 
 /**
@@ -19,9 +20,18 @@ const getMovies = (state = INITIAL_STATE, action) => {
     ...action.data,
   ];
 }
+
+const getMovie = (state = INITIAL_STATE, action) => {
+  return [
+    ...action.data,
+  ];
+}
+
+
 /**
  * Reducer
  */
 export default createReducer(INITIAL_STATE, {
   [Types.GET_MOVIES]: getMovies,
+  [Types.GET_MOVIE]: getMovie,
 });

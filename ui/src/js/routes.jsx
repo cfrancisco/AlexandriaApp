@@ -6,7 +6,7 @@ const Routes = (props) => (
   <Switch>
     <Route exact path='/' component={Home} attrs={props} />
     <Route path='/home' component={Home} attrs={props} />
-    <Route path='/movie:id' component={Movie} attrs={props} />
+    <Route path='/movie/:movieId' component={Movie} attrs={props} />
     <Route path='*' component={Home} attrs={props} />
   </Switch>
 );

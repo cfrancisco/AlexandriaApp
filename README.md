@@ -6,19 +6,18 @@
 
 # Alexandria
 
-**Alexandria** is an application that displays information about the searched movies, including their poster, IMDB ratings, as well as the ability to favorite them.
+**Alexandria** is an 40-hour project created for displays information about the searched movies, including their poster, IMDB ratings, as well as the ability to favorite them. 
 <div style="display: flex, flex-direction: row, align-items: center, justify-content: center">
 <img src="https://github.com/cfrancisco/AlexandriaApp/blob/master/.github/ss1.png?raw=true" alt="Home Screen" width="50%"/>
 </div>
 
 ## :white_check_mark: Table of Contents
 
-1. [Front-End](#front-end)
-2. [Back-End](#back-end)
-2. [Technologies](#technologies)
-3. [How To Run](#how-to-run)
-4. [Screenshots](#screenshots)
-6. [License](#license)
+1. [Front-End](#page_facing_up-front-end)
+2. [Back-End](#page_facing_up-back-end)
+3. [Technologies](#page_facing_up-technologies)
+4. [How To Run](#zap-how-to-run)
+5. [License](#handshake-license)
 
 ## :page_facing_up: Front-End
 
@@ -29,7 +28,7 @@ The Front End App consists of two main screens:
 - Details screen, which provides information about the movie, such as director, actors, IMDB rating, etc.
 ## :page_facing_up: Back-End
 
-The **Alexandria - Backend** is responsible for retrieving movies catalogs from a third-party API and provides them using GraphQL API.
+The **Alexandria - Backend** is a NodeJS application that is responsible for retrieving movies catalogs from a third-party API and provides them using GraphQL API.
 
 ## :page_facing_up: Technologies
 
@@ -54,14 +53,6 @@ $ docker-compose up -d
 ```
 
 3. Go to http://localhost:8800 to open the project
-
-## :large_blue_circle: Screenshots
-
-
-<div style="display: flex, flex-direction: row, align-items: center, justify-content: center">
-<img src="https://github.com/cfrancisco/AlexandriaApp/blob/master/.github/ss1.png?raw=true" alt="Details Screen" width="50%"/>
-</div>
-
 
 ## :handshake: License
 
