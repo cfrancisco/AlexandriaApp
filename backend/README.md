@@ -15,6 +15,7 @@ The service was developed using the following technologies:
 
 - [NodeJs v14.17.5](https://nodejs.org/en/)
 - [GraphQL v15.5.1](https://graphql.org/)
+- [Jest v27.0.5](https://jestjs.io/pt-BR/)
 
 ### :large_blue_circle: Configurations
 
@@ -73,9 +74,9 @@ For example, the address could be:
 - More Unit Tests (Handle expection cases)
 - Create Graphql schema to fetch information about Ratings
 - Manage Favorite data using a Relational DB
-- Improve Security and blocks CORS
+- Improve Security and blocking CORS
 - Apply Performance tests
-- Apply GraphQL Union type and create its resolvers
+- Use GraphQL Union type and create new resolvers
 
 ## :handshake: License
 
