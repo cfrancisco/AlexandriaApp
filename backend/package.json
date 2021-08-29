@@ -1,0 +1,76 @@
+{
+  "name": "alexandriaapp",
+  "version": "0.1.0",
+  "description": "Backend for Alexandria movies library",
+  "engines": {
+    "npm": ">=7.0.14",
+    "node": ">=15.3.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest --verbose",
+    "lint": "eslint --ext .js .",
+    "lint:fix": "eslint --fix --ext .js ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cfrancisco/alexandriaapp"
+  },
+  "keywords": [
+    "movies",
+    "library"
+  ],
+  "author": "Francisco Angelo Cabelo",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.5.1",
+    "http-errors": "^1.8.0",
+    "pino": "^6.13.1",
+    "pino-pretty": "^6.0.0",
+    "util": "^0.12.4"
+  },
+  "jest": {
+    "verbose": true,
+    "testRegex": [
+      "test/unit/*",
+      "test/integration/*"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "lib"
+    ],
+    "collectCoverage": true,
+    "clearMocks": true,
+    "testPathIgnorePatterns": [
+      "test/coverage"
+    ],
+    "coverageDirectory": "<rootDir>/coverage",
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    }
+  },
+  "devDependencies": {
+    "eslint": "^7.22.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.3.2",
+    "eslint-plugin-prettier": "^3.4.1",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-security-node": "^1.0.14",
+    "jest": "^26.4.2",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.3.2",
+    "supertest": "^6.0.1"
+  }
+}
