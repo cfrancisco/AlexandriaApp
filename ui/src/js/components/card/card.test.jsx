@@ -48,7 +48,7 @@ describe('Card', () => {
 
     expect(container).toBeInTheDocument();
     fireEvent.click(screen.getByRole('link'));
-    expect(global.window.location.pathname).toEqual('/movies:idRandom');
+    expect(global.window.location.pathname).toEqual('/movie/idRandom');
   });
 
 });

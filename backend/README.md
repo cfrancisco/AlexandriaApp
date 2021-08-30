@@ -39,22 +39,6 @@ For example, the address could be:
 
 ## :zap: How to run
 
-### :computer: Using Docker
-
-1. Build the Image
-
-```
-   docker build -f Dockerfile -t alexbackend .
-```
-
-2. Run the docker compose
-
-```
-   cd ..
-
-   docker-compose up -d
-```
-
 ### :computer: For Development
 
 1. Install the dependencies
@@ -67,6 +51,22 @@ For example, the address could be:
 
 ```
    yarn start
+```
+
+### :computer: Using Docker
+
+You could also build a new image for docker
+
+```
+   docker build -f Dockerfile -t alexbackend .
+```
+
+updates the docker-compose file and running it using the command:
+
+```
+   cd ..
+
+   docker-compose up -d
 ```
 
 ## :hourglass: Next Steps

@@ -15,7 +15,7 @@ const CardList = ({ favorites, toggleFavorite, areaTitle, movies }) => {
     mv.isFavorite = favorites[movie.imdbID] === true;
     return mv;
   });
-  moviesWithFav.sort((a, b) => {
+  moviesWithFav.sort((a) => {
     if (a.isFavorite === true)
       return -1;
     return 0;

@@ -37,6 +37,7 @@ The **Alexandria - Backend** is a NodeJS application that is responsible for ret
 <img src="https://github.com/cfrancisco/AlexandriaApp/blob/master/.github/arq.png?raw=true" alt="Software schema" width="60%"/>
 </div>
 
+More details are presented in the UI/Backend readmes.
 ## :zap: How to run
 
 ### :computer: Using Docker
